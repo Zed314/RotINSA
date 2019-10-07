@@ -1,140 +1,292 @@
+
 <!doctype html>
 
 <html lang="en">
+
 <head>
 	<meta charset="utf-8">
 
-	<title>Roti</title>
+	<title>Rôti</title>
 	<link rel="stylesheet" href="font-awesome-4.6.3/css/font-awesome.min.css">
-	<meta name="description" content="La rotisserie en ligne">
-	<meta name="author" content="Des gens roti">
+	<meta name="description" content="La rôtisserie en ligne">
+	<meta name="author" content="Des gens rôti">
 	<link href='https://fonts.googleapis.com/css?family=Noto+Sans:400,700' rel='stylesheet' type='text/css'>
 
 	<!--Import Google Icon Font-->
-     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-     <!--Import materialize.css-->
-     <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!--Import materialize.css-->
+	<link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css" media="screen,projection" />
 
-     <!--Let browser know website is optimized for mobile-->
-     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<!--Let browser know website is optimized for mobile-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 	<link rel="stylesheet" href="roti.css">
-	
+
+	<link rel="apple-touch-icon-precomposed" sizes="57x57" href="favicon/apple-touch-icon-57x57.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="favicon/apple-touch-icon-114x114.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="favicon/apple-touch-icon-72x72.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="favicon/apple-touch-icon-144x144.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="60x60" href="favicon/apple-touch-icon-60x60.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="120x120" href="favicon/apple-touch-icon-120x120.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="76x76" href="favicon/apple-touch-icon-76x76.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="152x152" href="favicon/apple-touch-icon-152x152.png" />
+	<link rel="icon" type="image/png" href="favicon/favicon-196x196.png" sizes="196x196" />
+	<link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96" />
+	<link rel="icon" type="image/png" href="favicon/favicon-32x32.png" sizes="32x32" />
+	<link rel="icon" type="image/png" href="favicon/favicon-16x16.png" sizes="16x16" />
+	<link rel="icon" type="image/png" href="favicon/favicon-128.png" sizes="128x128" />
+	<meta name="application-name" content="&nbsp;" />
+	<meta name="msapplication-TileColor" content="#FFFFFF" />
+	<meta name="msapplication-TileImage" content="favicon/mstile-144x144.png" />
+	<meta name="msapplication-square70x70logo" content="favicon/mstile-70x70.png" />
+	<meta name="msapplication-square150x150logo" content="favicon/mstile-150x150.png" />
+	<meta name="msapplication-wide310x150logo" content="favicon/mstile-310x150.png" />
+	<meta name="msapplication-square310x310logo" content="favicon/mstile-310x310.png" />
+
+	<script type="text/javascript" src="loadCard.js"></script>
 
 
-  <!--[if lt IE 9]>
+
+	<!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 </head>
 
 <body>
+	<div class="vignette"></div>
 
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 
 	<div class="container">
 		<div class="center-block">
-			<div class="flip-container" onclick='turn()';>
+			<div class="flip-container" onclick='turn()' ;>
 				<div class="flipper" id="flip">
 					<div class="front" id="front">
-						<div class="card suitspin"'>
-							<p> Chaqu'un énumère un mort de Game Of Thrones. Celui qui ne sait plus boit <i class="fa fa-beer" aria-hidden="true"></i>
-								<i class="fa fa-beer" aria-hidden="true"></i>.
-				   			</p>
+						<div class="card suitregle">
+							<p> <b>Règles</b> : Chaque rôti tire une carte à tour de role dans le sens des aiguilles d'une montre.
+
+							</p>
 						</div>
 					</div>
 
 					<div class="back" id="back">
-						<div class="card suitquestion">
-							<p> Ceux qui font des retours à la ligne avant d'ouvrir des acollades boivent 
-								<i class="fa fa-beer" aria-hidden="true"></i><i class="fa fa-beer" aria-hidden="true"></i><i class="fa fa-beer" aria-hidden="true"></i>.
-				   			</p>
+						<div class="card suitregle">
+							<p> Un <i class="fa fa-beer" aria-hidden="true"></i> indique un shot de boisson. Chacun est libre de boire ce qu'il veut, du moment que ça rend rôti. <br/> <b> Bon Rôtissage !</b>
+							</p>
 						</div>
 					</div>
 
 
 				</div>
 			</div>
-		</div>	
-
+		</div>
+		<p class="player-name" id="player-box" style="visibility: hidden;">Tour de : <span id="player-name"></span></p>
 		<div class="center-item">
-			<a class="waves-effect waves-light btn" onclick='turn();'>Roti-moi ! </a>
+			<a class="waves-effect waves-light btn green lighten-1" onclick='turn();'>rôti-moi ! </a>
+		</div>
+		<div class="center-item">
+			<a class="waves-effect waves-light btn green lighten-1" href="index.html">Retour au choix de deck</a>
+		</div>
+
+		<div class="modal" id="deckend">
+			<div class="modal-content">
+				<h4>Fin du deck ! </h4>
+				<p>Tout le monde perd son rôle et toutes les règles sont annulés ! C'est reparti pour un tour !</p>
+			</div>
+			<div class="modal-footer">
+				<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Let's rôti !</a>
+			</div>
+			<div class="modal-footer">
+				<a href="http://kara71.github.io/RotINSA/" class=" modal-action modal-close waves-effect waves-green btn-flat">Je veux me rôtir autrement !</a>
+			</div>
+
 		</div>
 
 	</div>
 
 	<script type="text/javascript">
-	var count = 1;
-	var block = false;
+		function escapeHtml(text) {
+			var map = {
+				'&': '&amp;',
+				'<': '&lt;',
+				'>': '&gt;',
+				'"': '&quot;',
+				"'": '&#039;'
+			};
 
-	var json = [];
-	var total_cards = [];
-	var deck = [];
+			return text.replace(/[&<>"']/g, function(m) {
+				return map[m];
+			});
+		}
+		var count = 1;
+		var block = true;
+
+		var json = [];
+		var total_cards = [];
+		var deck = [];
+
+		var joueurs = JSON.parse(localStorage.getItem("joueurs"));
+		if (!joueurs) {
+			joueurs = ["Bob", "Alice", "Fred"];
+		}
+		playerTurn = Math.floor((Math.random() * (joueurs.length)));
+
+		var getUrlParameter = function getUrlParameter(sParam) {
+			var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+				sURLVariables = sPageURL.split('&'),
+				sParameterName,
+				i;
+
+			for (i = 0; i < sURLVariables.length; i++) {
+				sParameterName = sURLVariables[i].split('=');
+
+				if (sParameterName[0] === sParam) {
+					return sParameterName[1] === undefined ? true : sParameterName[1];
+				}
+			}
+		};
+		// Charger le fichier de cartes
+		// TODO : Charger le nom du fichier à partir de la barre d'adresse
 
 
-	// Charger le fichier de cartes 
-	// TODO : Chargher le nom du fichier à partir de la bare d'adresse
-	 $.getJSON("template.json", function(data)
-	 	{
-	 		json = data;
-	 		total_cards = json.cards;
+		file = getUrlParameter("deck");
+		if (!file) {
+			file = localStorage.getItem("deck");
+			if (!file) {
+				file = "template.json";
+			}
+		}
 
-	 	});
 
-		function turn(){
+
+		file = "decks/" + file;
+		$.getJSON(file, function(data) {
+			json = data;
+			total_cards = json.cards;
+			/*for (var i = 0; i < deck.length / 10; i++)
+			{
+				deck.push(
+				{
+					"type":"action",
+					"content":"Toutes les règles en cours sont annulés."
+				}
+
+				);
+			}*/
+
+			deck = randomDeck(total_cards.slice());
+
+			block = false;
+		});
+
+		var showModalNextTurn = false;
+		var skipNextTurn = 0;
+		var turnPlayed = 0;
+
+		function turn() {
 
 			// Attentre que block soit dispo (pour eviter de tourner plusieurs cartes en même temps)
-			if (!block)
-			{
+			if (!block) {
+
+				// Attendre 2 tours avant de show les noms de gens
+				turnPlayed++;
+
+				if (turnPlayed == 2) {
+					$("#player-box").removeAttr("style");
+				}
 				block = true;
+				$("#player-name").html(escapeHtml(joueurs[playerTurn]));
+
+				// Gerer le sautage de tours
+				playerTurn = (playerTurn + skipNextTurn) % joueurs.length;
+				if (skipNextTurn != 1) {
+					skipNextTurn = 1;
+				}
+
+
+
+				if (showModalNextTurn == true) {
+					$("#deckend").openModal();
+					showModalNextTurn = false;
+				}
+
+				// Si le deck est vide, le recharger
+				if (deck.length == 0) {
+					deck = randomDeck(total_cards.slice());
+					showModalNextTurn = true;
+				}
+
 
 				// Faire tourner la carte
-			  $("#flip").addClass('rotate');
+				$("#flip").addClass('rotate');
 
 
-			  // Attendre la fin de l'animation
-			  $("#flip").one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend',   
-			  function(e) {
+				// Attendre la fin de l'animation
+				$("#flip").one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend',
+					function(e) {
 
-			  	// Copier la carte au back sur le front
-			  	$("#front").html($("#back").html());
+						// Copier la carte au back sur le front
+						$("#front").html($("#back").html());
 
-				// Enlever la rotation (la carte front repasse devant)
-			  	$("#flip").removeClass('rotate');
+						// Enlever la rotation (la carte front repasse devant)
+						$("#flip").removeClass('rotate');
 
-			  	// Si le deck est vide, le recharger
-			  	if (deck.length == 0)
-			  	{
-			  		deck = total_cards.slice();
-			  	}
+						// Charger ici le back de la prochaine carte à jouer (back)
+						var id = Math.floor((Math.random() * (deck.length)));
 
-			  	// Charger ici le back de la prochaine carte à jouer (back)
-			  	var id = Math.floor((Math.random() * (deck.length)));
+						loadCard("#back .card", deck, id);
 
-			  	// Enlever les classe de la carte du back pour pouvoir les recharger en fonction de ce qu'il y a dans le json
-			  	$("#back .card").removeClass().addClass("card");
+						// Verifier qu'il n'y à pas de noturn sur la carte
+						if (typeof deck[id].skipTurn != 'undefined') {
+							skipNextTurn = deck[id].skipTurn;
+						}
 
-			  	// Si la carte à un type, le charger
-			  	if (deck[id].type)
-			  	{
-			  		$("#back .card").addClass("suit"+deck[id].type);
-			  	}
-			  	$("#back .card p ").html(deck[id].content);
+						// Enlever la carte du deck
+						if (deck[id].count && deck[id].count > 1) {
+							deck[id].count--;
+						} else {
+							deck.splice(id, 1);
+						}
 
-			  	// Enlever la carte du deck
-			  	deck.splice(id,1);
 
-			  	block = false;
-				});
+						block = false;
+					});
 			}
 
 
 		};
 
+		function shuffle(array) {
+			var currentIndex = array.length,
+				temporaryValue, randomIndex;
+
+			// While there remain elements to shuffle...
+			while (0 !== currentIndex) {
+
+				// Pick a remaining element...
+				randomIndex = Math.floor(Math.random() * currentIndex);
+				currentIndex -= 1;
+
+				// And swap it with the current element.
+				temporaryValue = array[currentIndex];
+				array[currentIndex] = array[randomIndex];
+				array[randomIndex] = temporaryValue;
+			}
+
+			return array;
+		}
+
+		function randomDeck(original) {
+			rand = shuffle(original)
+
+			if (rand.length > 52) {
+				rand = rand.slice(0, 52);
+			}
+			return rand;
+		}
 	</script>
 
 </body>
-
-
 
 </html>
